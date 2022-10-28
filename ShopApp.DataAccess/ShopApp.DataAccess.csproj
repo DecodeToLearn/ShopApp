@@ -4,4 +4,27 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Abstract\" />
+    <None Remove="Concrete\" />
+    <None Remove="Concrete\EfCore\" />
+    <None Remove="Concrete\MySql\" />
+    <None Remove="Concrete\Oracle\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Concrete\EfCore\" />
+    <Folder Include="Concrete\MySql\" />
+    <Folder Include="Concrete\Oracle\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopApp.Entities\ShopApp.Entities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+  </ItemGroup>
 </Project>

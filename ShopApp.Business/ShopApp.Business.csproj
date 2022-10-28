@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Abstract\" />
+    <None Remove="Concrete\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopApp.Entities\ShopApp.Entities.csproj" />
+    <ProjectReference Include="..\ShopApp.DataAccess\ShopApp.DataAccess.csproj" />
+  </ItemGroup>
 </Project>
