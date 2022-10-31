@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ShopApp.Business.Abstract;
+using ShopApp.Business.Concrete;
+using ShopApp.DataAccess.Abstract;
+using ShopApp.DataAccess.Concrete.Memory;
 
 namespace ShopApp.WebUI
 {
@@ -15,24 +19,19 @@ namespace ShopApp.WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<IProductDal, MemoryProductDal>();
+            services.AddScoped<IProductService, ProductManger>();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseStaticFiles();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

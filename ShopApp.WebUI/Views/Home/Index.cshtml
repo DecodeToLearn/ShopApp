@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ShopApp.Entities.Product>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    @foreach (var item in Model)
+        {
+                <p>@item.Name</p>
+        }
+</body>
+</html>
