@@ -1,14 +1,21 @@
-﻿@model IEnumerable<ShopApp.Entities.Product>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    @foreach (var item in Model)
-        {
-                <p>@item.Name</p>
-        }
-</body>
-</html>
+﻿@model ShopApp.WebUI.Models.ProductListModel
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item">Telefon</li>
+            <li class="list-group-item">Bilgisayar</li>
+            <li class="list-group-item">Elektronik</li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <partial name="_slider"/>
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <partial name="_product" for="@product" />
+            }
+        </div>
+    </div>
+</div>
+
+
