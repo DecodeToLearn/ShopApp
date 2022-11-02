@@ -27,6 +27,7 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Swashbuckle.AspNetCore" />
     <None Remove="Views\Shared\" />
+    <None Remove="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -39,6 +40,7 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />

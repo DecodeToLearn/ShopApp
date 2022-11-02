@@ -11,7 +11,7 @@ using ShopApp.DataAccess.Concrete.EfCore;
 namespace ShopApp.DataAccess.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20221031151910_InitialCreate")]
+    [Migration("20221102140212_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,9 @@ namespace ShopApp.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -67,9 +70,6 @@ namespace ShopApp.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("CategoryId", "ProductId");
