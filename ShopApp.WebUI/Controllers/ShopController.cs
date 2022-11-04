@@ -16,17 +16,7 @@ namespace ShopApp.WebUI.Controllers
         {
             _productService = productService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult List()
-        {
-            return View(new ProductListModel()
-            {
-                Products = _productService.GetAll()
-            });
-        }
+
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -44,5 +34,21 @@ namespace ShopApp.WebUI.Controllers
                 Categories = product.ProductCategories.Select(i => i.Category).ToList()
             });
         }
+        public IActionResult List(string category, int page = 1)
+        {
+            const int pageSize = 3;
+
+            return View(new ProductListModel()
+            {
+                Products = _productService.GetProductsByCategory(category, page, pageSize),
+                PagingInfo = new PagingInfo()
+                {
+                    TotalItems = _productService.GetCountByCategory(category),
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    CurrentCategory = category
+                }               
+            });
+        }   
     }
 }

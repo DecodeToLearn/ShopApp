@@ -10,9 +10,21 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 {
     public class EfCoreProductDal : EfCoreGenericRepository<Product, ShopContext>, IProductDal
     {
-        public IEnumerable<Product> GetPopulerProducts()
+        public int GetCountByCategory(string category)
         {
-            throw new NotImplementedException();
+            using (var context = new ShopContext())
+            {
+                var products = context.Products.AsQueryable();
+
+                if (!string.IsNullOrEmpty(category))
+                {
+                    products = products
+                                .Include(i => i.ProductCategories)
+                                .ThenInclude(i => i.Category)
+                                .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
+                }
+                return products.Count();
+            }
         }
 
         public Product GetProductDetails(int id)
@@ -23,6 +35,23 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                     .Where(i => i.Id == id)
                     .Include(i => i.ProductCategories)
                     .ThenInclude(i => i.Category).FirstOrDefault();
+            }
+        }
+
+        public List<Product> GetProductsByCategory(string category, int page, int pageSize)
+        {
+            using (var context = new ShopContext())
+            {
+                var products = context.Products.AsQueryable();
+
+                if (!string.IsNullOrEmpty(category))
+                {
+                    products = products
+                                .Include(i => i.ProductCategories)
+                                .ThenInclude(i => i.Category)
+                                .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
+                }
+                return products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
         }
     }

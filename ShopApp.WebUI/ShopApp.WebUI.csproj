@@ -28,6 +28,11 @@
     <None Remove="Swashbuckle.AspNetCore" />
     <None Remove="Views\Shared\" />
     <None Remove="Views\Shop\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\CategoryList\" />
+    <None Remove="TagHelpers\" />
+    <None Remove="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -41,6 +46,11 @@
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="Views\Shop\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\CategoryList\" />
+    <Folder Include="TagHelpers\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
